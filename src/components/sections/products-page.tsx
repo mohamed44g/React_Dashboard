@@ -10,7 +10,7 @@ import {
   IconButton,
   Avatar,
 } from "@mui/material";
-import { Package, Plus, Edit, Trash2, Eye } from "lucide-react";
+import { Package, Plus, Eye, Edit, Trash2 } from "lucide-react";
 
 const products = [
   {
@@ -206,85 +206,131 @@ export default function ProductsPage() {
                 <Box
                   sx={{
                     display: "flex",
-                    gap: 2,
-                    p: 2,
+                    gap: { xs: 1, sm: 2 },
+                    p: { xs: 1, sm: 2 },
                     backgroundColor: "#252540",
                     borderRadius: 2,
+                    overflowX: { xs: "auto", sm: "visible" },
+                    "&::-webkit-scrollbar": {
+                      display: "none", // Hide scrollbar for WebKit browsers
+                    },
+                    scrollbarWidth: { xs: "none", sm: "none" }, // Hide scrollbar for Firefox
+                    "-ms-overflow-style": { xs: "none", sm: "none" }, // Hide scrollbar for Edge/IE
                   }}
                 >
-                  <Avatar
-                    variant="rounded"
-                    src={product.image}
-                    sx={{ width: 64, height: 64, backgroundColor: "#333356" }}
-                  />
-                  <Box sx={{ flexGrow: 1 }}>
-                    <Box
+                  <Box
+                    sx={{
+                      display: "flex",
+                      gap: { xs: 1, sm: 2 },
+                      minWidth: { xs: "400px", sm: "auto" }, // Ensure enough width for all content on mobile
+                    }}
+                  >
+                    <Avatar
+                      variant="rounded"
+                      src={product.image}
                       sx={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        alignItems: "flex-start",
+                        width: { xs: 45, sm: 65 },
+                        height: { xs: 45, sm: 65 },
+                        backgroundColor: "#333356",
+                        flexShrink: 0,
                       }}
-                    >
-                      <Box>
-                        <Typography variant="h6" sx={{ color: "white" }}>
-                          {product.name}
-                        </Typography>
-                        <Typography
-                          variant="body2"
-                          sx={{ color: "#c084fc", mt: 0.5 }}
-                        >
-                          {product.description}
-                        </Typography>
+                    />
+                    <Box sx={{ flexGrow: 1, minWidth: 0 }}>
+                      <Box
+                        sx={{
+                          display: "flex",
+                          justifyContent: "space-between",
+                          alignItems: "flex-start",
+                          gap: { xs: 1, sm: 2 },
+                        }}
+                      >
+                        <Box sx={{ minWidth: 0 }}>
+                          <Typography
+                            variant="h6"
+                            sx={{
+                              color: "white",
+                              whiteSpace: { xs: "normal", sm: "nowrap" },
+                              overflow: "hidden",
+                              textOverflow: "ellipsis",
+                            }}
+                          >
+                            {product.name}
+                          </Typography>
+                          <Typography
+                            variant="body2"
+                            sx={{
+                              color: "#c084fc",
+                              mt: 0.5,
+                              whiteSpace: { xs: "normal", sm: "nowrap" },
+                              overflow: "hidden",
+                              textOverflow: "ellipsis",
+                            }}
+                          >
+                            {product.description}
+                          </Typography>
+                          <Box
+                            sx={{
+                              display: "flex",
+                              alignItems: "center",
+                              gap: { xs: 0.5, sm: 1 },
+                              mt: 1,
+                              flexWrap: { xs: "wrap", sm: "nowrap" },
+                            }}
+                          >
+                            <Typography
+                              variant="body1"
+                              sx={{ color: "white", fontWeight: "bold" }}
+                            >
+                              ${product.price}
+                            </Typography>
+                            <Typography
+                              variant="body2"
+                              sx={{ color: "#c084fc" }}
+                            >
+                              Stock: {product.stock}
+                            </Typography>
+                            <Typography
+                              variant="body2"
+                              sx={{ color: "#c084fc" }}
+                            >
+                              Sales: {product.sales}
+                            </Typography>
+                            <Chip
+                              label={product.category}
+                              size="small"
+                              sx={{
+                                backgroundColor: "#334155",
+                                color: "#c084fc",
+                              }}
+                            />
+                          </Box>
+                        </Box>
                         <Box
                           sx={{
                             display: "flex",
                             alignItems: "center",
-                            gap: 2,
-                            mt: 1,
+                            gap: 0.5,
+                            flexShrink: 0,
                           }}
                         >
-                          <Typography
-                            variant="body1"
-                            sx={{ color: "white", fontWeight: "bold" }}
-                          >
-                            ${product.price}
-                          </Typography>
-                          <Typography variant="body2" sx={{ color: "#c084fc" }}>
-                            Stock: {product.stock}
-                          </Typography>
-                          <Typography variant="body2" sx={{ color: "#c084fc" }}>
-                            Sales: {product.sales}
-                          </Typography>
                           <Chip
-                            label={product.category}
+                            label={product.status}
                             size="small"
                             sx={{
-                              backgroundColor: "#334155",
-                              color: "#c084fc",
+                              backgroundColor: getStatusColor(product.status),
+                              color: "white",
                             }}
                           />
+                          <IconButton size="small" sx={{ color: "#c084fc" }}>
+                            <Eye size={16} />
+                          </IconButton>
+                          <IconButton size="small" sx={{ color: "#c084fc" }}>
+                            <Edit size={16} />
+                          </IconButton>
+                          <IconButton size="small" sx={{ color: "#ef4444" }}>
+                            <Trash2 size={16} />
+                          </IconButton>
                         </Box>
-                      </Box>
-                      <Box
-                        sx={{ display: "flex", alignItems: "center", gap: 1 }}
-                      >
-                        <Chip
-                          label={product.status}
-                          size="small"
-                          sx={{
-                            backgroundColor: getStatusColor(product.status),
-                            color: "white",
-                          }}
-                        />
-                        <IconButton size="small" sx={{ color: "#c084fc" }}>
-                          <Eye size={16} />
-                        </IconButton>
-                        <IconButton size="small" sx={{ color: "#c084fc" }}>
-                          <Edit size={16} />
-                        </IconButton>
-                        <IconButton size="small" sx={{ color: "#ef4444" }}>
-                          <Trash2 size={16} />
-                        </IconButton>
                       </Box>
                     </Box>
                   </Box>
