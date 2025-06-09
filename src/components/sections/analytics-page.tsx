@@ -9,7 +9,7 @@ import {
 import { BarChart3 } from "lucide-react";
 import { EnhancedLineChart } from "../charts/enhanced-charts";
 
-export function AnalyticsPage() {
+export default function AnalyticsPage() {
   const trafficData = [
     1200, 1900, 3000, 5000, 2000, 3000, 4500, 3200, 4100, 3800, 5200, 6100,
   ];

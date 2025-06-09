@@ -2,7 +2,7 @@ import { Box, Typography } from "@mui/material";
 import { StatsCards } from "../dashboard/stats-cards";
 import { ChartsSection } from "../dashboard/charts-section";
 
-export function DashboardPage() {
+export default function DashboardPage() {
   return (
     <Box sx={{ display: "flex", flexDirection: "column", gap: 3 }}>
       <Box>

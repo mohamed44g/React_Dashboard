@@ -25,7 +25,7 @@ import {
   MoreHorizontal,
 } from "lucide-react";
 
-export function UsersPage() {
+export default function UsersPage() {
   const users = [
     {
       id: 1,

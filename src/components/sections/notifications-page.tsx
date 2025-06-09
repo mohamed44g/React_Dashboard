@@ -58,7 +58,7 @@ const notifications = [
   },
 ];
 
-export function NotificationsPage() {
+export default function NotificationsPage() {
   const getTypeColor = (type: string) => {
     switch (type) {
       case "order":

@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 import { Settings, User, Bell, Shield } from "lucide-react";
 
-export function SettingsPage() {
+export default function SettingsPage() {
   return (
     <Box sx={{ display: "flex", flexDirection: "column", gap: 3 }}>
       <Box>

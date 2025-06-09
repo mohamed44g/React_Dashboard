@@ -61,7 +61,7 @@ const orders = [
   },
 ];
 
-export function OrdersPage() {
+export default function OrdersPage() {
   const getStatusColor = (status: string) => {
     switch (status) {
       case "Delivered":

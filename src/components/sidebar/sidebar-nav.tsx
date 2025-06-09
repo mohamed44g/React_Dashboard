@@ -10,6 +10,7 @@ import {
   Box,
   useTheme,
   IconButton,
+  useMediaQuery,
 } from "@mui/material";
 import {
   BarChart3,
@@ -77,12 +78,12 @@ export function SidebarNav({
   onToggle,
 }: SidebarNavProps) {
   const theme = useTheme();
-  const isMobile = theme.breakpoints.down("sm");
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   const handleItemClick = (url: string) => {
     onTabChange(url);
     if (isMobile) {
-      onToggle(); // Close drawer on mobile when an item is clicked
+      onToggle();
     }
   };
 

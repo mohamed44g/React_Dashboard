@@ -59,7 +59,7 @@ const products = [
   },
 ];
 
-export function ProductsPage() {
+export default function ProductsPage() {
   const getStatusColor = (status: string) => {
     switch (status) {
       case "Active":

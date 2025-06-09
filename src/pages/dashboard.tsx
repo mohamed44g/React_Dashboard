@@ -1,16 +1,24 @@
 "use client";
 
-import { useState } from "react";
+import { useState, lazy } from "react";
 import { Box, useMediaQuery, useTheme } from "@mui/material";
 import { SidebarNav } from "../components/sidebar/sidebar-nav";
 import { Navbar } from "../components/navbar/navbar";
-import { DashboardPage } from "../components/sections/dashboard-page";
-import { AnalyticsPage } from "../components/sections/analytics-page";
-import { UsersPage } from "../components/sections/users-page";
-import { OrdersPage } from "../components/sections/orders-page";
-import { ProductsPage } from "../components/sections/products-page";
-import { SettingsPage } from "../components/sections/settings-page";
-import { NotificationsPage } from "../components/sections/notifications-page";
+const DashboardPage = lazy(
+  () => import("../components/sections/dashboard-page")
+);
+
+const AnalyticsPage = lazy(
+  () => import("../components/sections/analytics-page")
+);
+
+const UsersPage = lazy(() => import("../components/sections/users-page"));
+const OrdersPage = lazy(() => import("../components/sections/orders-page"));
+const ProductsPage = lazy(() => import("../components/sections/products-page"));
+const SettingsPage = lazy(() => import("../components/sections/settings-page"));
+const NotificationsPage = lazy(
+  () => import("../components/sections/notifications-page")
+);
 
 export default function Component() {
   const [activeTab, setActiveTab] = useState("dashboard");
